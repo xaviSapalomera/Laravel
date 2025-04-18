@@ -1,0 +1,35 @@
+/* Estilos generales para el pop-up */
+.alert-popup {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    left: 50%;
+    top: 10%; /* Opcional: Ubicación en la parte superior */
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* Color base (verde) */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0; /* Comienza invisible */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animaciones suaves */
+}
+
+/* Mostrar el pop-up cuando se activa la clase .show-alert */
+.alert-popup.show-alert {
+    display: block; /* Hacer visible */
+    opacity: 1; /* Hacerlo completamente visible */
+    transform: translate(-50%, 0); /* Desplazamiento sutil */
+}
+
+/* Estilo para el mensaje de éxito */
+.alert-popup.success {
+    background-color: #4CAF50; /* Verde para éxito */
+}
+
+/* Estilo para el mensaje de error */
+.alert-popup.error {
+    background-color: #f44336; /* Rojo para error */
+}

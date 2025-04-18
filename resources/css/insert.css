@@ -1,0 +1,90 @@
+/* Estilos generales para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Estilo para los formularios */
+form.boto {
+    float: right;
+    margin: 10px;
+}
+
+form.boto input[type="submit"] {
+    background-color: #FDDE14;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+form.boto input[type="submit"]:hover {
+    background-color: #FDDE14;
+}
+
+/* Separador */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+}
+
+/* Estilo para el formulario principal */
+form.form {
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los campos de entrada */
+form.form .input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form.form .input:focus {
+    outline: none;
+    border-color: #FDDE14;
+    box-shadow: 0 0 5px #FDDE14;
+}
+
+/* Estilo para el textarea */
+form.form textarea {
+    resize: none;
+}
+
+/* Estilo para el botón de enviar */
+form.form input[type="submit"] {
+    background-color: #FDDE14;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: calc(50% - 75px);
+    display: block;
+    width: 170px;
+    transition: background-color 0.3s;
+}
+
+form.form input[type="submit"]:hover {
+    background-color: #FDDE14;
+}
+#articlesTable{
+    color: black;
+    background-color: white;
+}

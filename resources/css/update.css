@@ -1,0 +1,122 @@
+.icon_perfil {
+    width: 50px;
+    height: 50px;
+    background-image: url('./photos/icon_user.png');
+    background-size: cover;
+    background-position: center; 
+    float: right; 
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+
+.contenidor {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+.boto{
+    text-align: right;
+    margin: 10px 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: right;
+}
+
+.form {
+    padding-top: 50px;
+    margin: 10px 0;
+    margin-right: 700px;
+}
+.input{
+
+    font-size: 40px;
+    margin-top: 20px;
+    border-radius: 0.25cm;
+
+}
+
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.articles ul {
+    list-style: none;
+    padding: 0;
+}
+
+.articles li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.articles li:last-child {
+    border-bottom: none;
+}
+
+.articles li:nth-child(2n) {
+    background-color: #f9f9f9;
+}
+
+.paginacio {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.paginacio ul {
+    list-style-type: none;
+    padding: 0;
+    display: inline-flex;
+}
+
+.paginacio li {
+    margin: 0 5px;
+}
+
+.paginacio a {
+    display: inline-block;
+    padding: 8px 16px;
+    color: #333;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.paginacio a:hover {
+    background-color: #ddd;
+}
+
+.paginacio .active a {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.paginacio .disabled a {
+    color: #ccc;
+    pointer-events: none;
+}   
