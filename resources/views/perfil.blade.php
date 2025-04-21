@@ -62,17 +62,17 @@
     <div>
         <!-- Formulario para actualizar contraseña -->
         <form class="form" action="{{ route('perfil.actualitzarcontrasenya') }}" method="POST">
-    @csrf
-    @method('PUT')
-
-    <input name="oldpassword" class="input" type="password" placeholder="Antiga Contrasenya" required>
-    <br>
-    <input name="newpassword" class="input" type="password" placeholder="Nova Contrasenya" required>
-    <br>
-    <input name="newpassword_confirmation" class="input" type="password" placeholder="Repeteix Nova Contrasenya" required>
-    <br><br>
-    <input type="submit" value="Canviar contrasenya">
-</form>
+            @csrf
+            @method('PUT') <!-- Esta línea es crucial -->
+            
+            <input name="oldpassword" class="input" type="password" placeholder="Antiga Contrasenya" required>
+            <br>
+            <input name="newpassword" class="input" type="password" placeholder="Nova Contrasenya" required>
+            <br>
+            <input name="newpassword_confirmation" class="input" type="password" placeholder="Repeteix Nova Contrasenya" required>
+            <br><br>
+            <input type="submit" value="Canviar contrasenya">
+        </form>
 
     </div>
 

@@ -25,9 +25,6 @@ class PerfilController extends Controller{
     //Funcio per mostrar el nickname de l'usuari amb que estas logeat
     public function mostrarnickname()
     {
-
-        
-        
         if (Auth::check() && Auth::user()->id) {
             
             $usuariModel = new UsuariModel();
@@ -63,24 +60,24 @@ class PerfilController extends Controller{
             'oldpassword' => 'required|string|min:8',
             'newpassword' => 'required|string|min:8|confirmed|different:oldpassword',
         ]);
-    
+        
         $user = Auth::user();
-    
+        
         // Verificar contraseña actual
-        if (!Hash::check($request->oldpassword, $user->password)) {
+        if (!Hash::check($request->oldpassword, $user->contrasenya)) {
             return back()->with('error', 'La contrasenya actual és incorrecta');
         }
-    
+        
         // Llamar al método del modelo
         $result = UsuariModel::actualitzarContrasenya(
             $request->newpassword,
             $user->id
         );
-    
+        
         if ($result) {
             return back()->with('success', 'Contrasenya actualitzada correctament');
         }
-    
+        
         return back()->with('error', 'Error al actualitzar la contrasenya');
     }
     

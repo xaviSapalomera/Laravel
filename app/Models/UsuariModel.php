@@ -55,6 +55,15 @@ class UsuariModel extends Authenticatable implements JWTSubject
     {
         return Hash::check($password, $userPassword);
     }
+    public static function actualitzarContrasenya($novaContrasenya, $usuariId)
+    {
+        $user = self::find($usuariId);
+        if (!$user) {
+            return false;
+        }
 
+        $user->contrasenya = Hash::make($novaContrasenya);
+        return $user->save();
+    }
 }
 

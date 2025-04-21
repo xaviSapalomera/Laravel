@@ -105,17 +105,12 @@ Route::delete('/articles/{id}', [ArticleController::class, 'borrarArticle']);
 
 });
 
-
-
 // Ruta per la autenticació Google
 Route::get('/login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 
 
 // Ruta per la autenticació Google
 Route::get('/login/google/callback', [LoginController::class, 'handleGoogleCallback']);
-
-
-
 
 
 // Ruta per mostrar la pantalla de noticies API : api.blade.php
