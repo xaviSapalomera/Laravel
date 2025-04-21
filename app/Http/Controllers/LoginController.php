@@ -65,17 +65,14 @@ public function login(Request $request){
     
         // Si el login falla, redirigir a la vista de login amb un missatge d'error
         return back()->withErrors([
-            'email' => 'Las credenciales proporcionadas son incorrectas.',
+            'email' => 'La contrasenya o l\'email es incorrecte',
         ]);
     }
         catch (\Exception $e) {
-            Log::error('Error en el proceso de login', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
+            Log::error('Error en el proces de login', $e);
     
             return back()->withErrors([
-                'email' => 'Error en el proceso de login. Inténtalo de nuevo más tarde.',
+                'email' => 'Error en el login',
             ]);
         }
     }
