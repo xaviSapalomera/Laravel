@@ -74,7 +74,7 @@
                         <p>{{ $article['cos'] ?? 'Sense Cos' }}</p>
                     </div>
 
-                    @if (Auth::check() && Auth::user()->id == $article['user_id'])
+                    @if (Auth::check() && Auth::user()->id == $article['user_id'] || Auth::user()->admin == 1)
                         <div class="article-actions">
                             <form method="GET" action="{{ route('articles.edit', $article['id']) }}" style="display: inline;">
                                 @csrf

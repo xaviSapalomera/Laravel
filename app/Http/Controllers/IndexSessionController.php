@@ -35,7 +35,7 @@ class IndexSessionController extends Controller
         
         
         if (!Auth::check()) {
-            return redirect()->route('login')->withErrors(['error' => 'Por favor, inicia sesión.']);
+            return redirect()->route('login')->withErrors(['error' => 'Si us plau, inicia sesio.']);
         }
 
         

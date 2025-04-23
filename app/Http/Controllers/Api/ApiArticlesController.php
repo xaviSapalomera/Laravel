@@ -25,11 +25,11 @@ use Illuminate\Support\Facades\Log;
             return response()->json($articles);
         }
 
-
+// Funcio per crear un article
 public function creaArticle(Request $request)
 {
     try {
-        // Verificar que el token JWT sea válido y obtener el usuario autenticado
+        // Verificar que el token JWT sigui valid i obtenir l'usuari autenticat
         $user = JWTAuth::parseToken()->authenticate();
 
         // Validar los datos del artículo
@@ -43,7 +43,7 @@ public function creaArticle(Request $request)
             'titol' => $validatedData['titol'],
             'cos' => $validatedData['cos'],
             'data' => now(),
-            'user_id' => $user->id,  // Usar el ID del usuario autenticado
+            'user_id' => $user->id,
         ]);
 
         return response()->json([
@@ -71,49 +71,48 @@ public function creaArticle(Request $request)
         return response()->json([
             'status' => 'error',
             'message' => 'Error al crear l\'article',
-            'debug' => config('app.debug') ? $e->getMessage() : null
         ], 500);
     }
 }
+
+// Funcio per actualitzar article per ID
 public function actualitzarArticle(Request $request, $id){
     try {
-        // Verificar que el token JWT sea válido y obtener el usuario autenticado
-        $user = JWTAuth::parseToken()->authenticate();
+        // Verifica que el token JWT sigui valid i obtenir l'usuari autenticat
+        $usuari = JWTAuth::parseToken()->authenticate();
 
-        // Validar los datos del artículo
+        // Validar les dades de l'article
         $request->validate([
-            'titol' => 'required|string|max:255',
-            'cos' => 'required|string',
+            'titol' => 'string|max:255',
+            'cos' => 'string',
         ]);
 
 
             
-            // Buscar el artículo
+            // Busca l'article per ID
             $article = ArticleModel::findOrFail($id);
             
-            // Verificar que el usuario es el propietario
-            if ($article->user_id != $user->id) {
+            // Verificar que es el propietari o admin
+            if ($article->user_id != $usuari->id && $usuari->admin != 1) {
                 return response()->json([
                     'status' => 'error',
                     'message' => 'No tens permisos per actualitzar aquest article'
                 ], 403);
             }
     
-            // Preparar datos para actualizar
-            $updateData = [
-                'data' => now()
-            ];
+            // Actualitzar la data de l'article
+            $DadeActualitzada = ['data' => now()];
             
             if ($request->has('titol')) {
-                $updateData['titol'] = $request->titol;
+                $DadeActualitzada['titol'] = $request->titol;
             }
             
             if ($request->has('cos')) {
-                $updateData['cos'] = $request->cos;
+                $DadeActualitzada['cos'] = $request->cos;
             }
     
-            // Actualizar el artículo
-            $article->update($updateData);
+            // Actualitzar el article
+            $article->update($DadeActualitzada);
     
             return response()->json([
                 'status' => 'success',
@@ -140,4 +139,49 @@ public function actualitzarArticle(Request $request, $id){
             ], 500);
         }
     }
+    //Funcio per borrar article per ID
+    public function borrarArticle(Request $request, $id){
+        try {
+            // Verifica que el token JWT sigui valid i obtenir l'usuari autenticat
+            $user = JWTAuth::parseToken()->authenticate();
+                
+                // Busca l'article per ID
+                $article = ArticleModel::findOrFail($id);
+                
+                // Verificar que es el propietari o admin
+                if($article->user_id != $user->id && $user->admin != 1) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'No tens permisos per borrar aquest article'
+                    ], 403);
+                }
+                
+                // Borrar l'article
+                ArticleModel::where('id', $id)->delete();
+        
+                // Retornar la resposta resposta
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Article eliminar correctament',
+                    'data' => [
+                        'id' => $article->id,
+                        'titol' => $article->titol,
+                        'user_id' => $article->user_id,
+                        'updated_at' => $article->data
+                    ]
+                ]);
+        
+            } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Article no trobat'
+                ], 404);
+                
+            } catch (\Exception $e) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Error al actualitzar l\'article',
+                ], 500);
+            }
+        }
 }
