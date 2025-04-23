@@ -95,9 +95,6 @@ Route::get('/articles/{id}/qr', [ArticleController::class, 'generarQR'])->name('
 Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
 
 
-Route::get('articles/{id}', [ArticleController::class, 'mostrarArticle'])->name('articles.mostrar');
-
-
 Route::put('/perfil/{id}/foto', [PerfilController::class, 'actualitzarFotodePerfil'])->name('actualitzar.fotoperfil');
 
 Route::get('/articles', [ArticleController::class, 'obtenirArticles']);
