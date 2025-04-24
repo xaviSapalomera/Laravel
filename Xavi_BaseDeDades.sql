@@ -279,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
   PRIMARY KEY (`id`),
   KEY `fk_user` (`user_id`),
   CONSTRAINT `fk_user` FOREIGN KEY (`user_id`) REFERENCES `usuaris` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;)
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 DELETE FROM `articles`;
