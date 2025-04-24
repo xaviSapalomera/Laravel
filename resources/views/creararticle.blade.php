@@ -27,7 +27,7 @@ ini_set('display_errors', 1);
     <hr style="width: 100%; margin: 0;">
     
     
-    <form id="articleForm" class="form" action="{{ route('articles.guardar') }}" method="POST" enctype="multipart/form-data">
+    <form id="articleForm" class="form" action="{{ route('crear.article') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="titol">Títol</label>

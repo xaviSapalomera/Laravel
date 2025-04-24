@@ -220,6 +220,8 @@ public function actualizar(Request $request, $id)
     }
 
 
+    
+
     //Funcio per mostrar l'article seleccionat a la vista indexsession.blade.php
     public function mostrar($id)
     {

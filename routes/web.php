@@ -78,9 +78,6 @@ Route::put('/articles/{id}/actualitzar', [ArticleController::class, 'actualizar'
 Route::delete('/articles/{id}/borrar', [ArticleController::class, 'borrar'])->name('articles.borrar');
 
 
-Route::get('/articles/{id}/qr', [ArticleController::class, 'qr'])->name('articles.qr');
-
-
 //Serveix per mostrar la pantalla de creació de articles: creararticle.blade.php
 Route::get('/creararticle', [ArticleController::class, 'pantallaCrear'])->name('articles.pantallacrear');
 
@@ -88,11 +85,13 @@ Route::get('/creararticle', [ArticleController::class, 'pantallaCrear'])->name('
 //Serveix per accionar el formulari per crear un article
 Route::post('/creararticle', [ArticleController::class, 'crearArticle'])->name('crear.article');
 
+
+
 //Ruta per mostrar la pantalla del QR de l'article seleccionat
 Route::get('/articles/{id}/qr', [ArticleController::class, 'generarQR'])->name('articles.qr');
 
 
-Route::get('/articles/{id}', [ArticleController::class, 'show'])->name('articles.show');
+
 
 
 Route::put('/perfil/{id}/foto', [PerfilController::class, 'actualitzarFotodePerfil'])->name('actualitzar.fotoperfil');
@@ -106,9 +105,14 @@ Route::delete('/articles/{id}', [ArticleController::class, 'borrarArticle']);
 Route::get('/login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 
 
+// Ruta per mostrar l'article seleccionat
+Route::get('/article/{id}', [ArticleController::class, 'mostrarArticle'])->name('articles.mostrar');
+
 // Ruta per la autenticació Google
 Route::get('/login/google/callback', [LoginController::class, 'handleGoogleCallback']);
 
+
+Route::get('/articles/{id}', [ArticleController::class, 'mostrar'])->name('articles.show');
 
 // Ruta per mostrar la pantalla de noticies API : api.blade.php
 Route::get('/noticies', [ApiNoticiesController::class, 'MostrarPantallaDeNoticiesApi'])->name('noticies.index');
