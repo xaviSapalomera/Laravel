@@ -180,7 +180,7 @@ public function actualitzarArticle(Request $request, $id){
             } catch (\Exception $e) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Error al actualitzar l\'article',
+                    'message' => 'Error al borrar l\'article',
                 ], 500);
             }
         }
