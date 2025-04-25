@@ -1,3 +1,84 @@
+# 🔐 Com Fer Peticions a la API
+
+## ✅ 1r Pas: Crear el Token
+
+Has d'enviar una petició a:
+
+/api/creatoken (Metode POST)
+
+> ⚠️ **IMPORTANT:** Abans de tot, has d'estar **registrat a la web**.
+
+### 🔧 Paràmetres que cal incloure:
+
+- `correu`: El teu correu electrònic
+- `contrasenya`: La teva contrasenya
+
+Et tornara un JSON amb 
+
+```
+{
+    "status": "success",
+    "token": "El_teu_token",
+    "expira": "2025-04-26 04:51:40"
+}
+```
+
+## ✅ 2r Pas: Validar el token
+
+
+Has d'enviar una petició a:
+
+/api/validartoken (Metode POST)
+
+- `token`: El token que te tornat el /api/token
+
+Et tornara un JSON amb
+
+```
+{
+    "status": "success",
+    "message": "Token valid, ja pots fer peticions"
+}
+```
+
+## ✅ 3r Pas: Header
+
+Authorization: Bearer El_teu_token
+
+(Exemple)
+
+![alt text](image-1.png)
+
+
+# ✅ JA POTS FER PETICIONS
+
+Un cop validat el token, ja pots començar a fer peticions a la API. Aquí tens alguns dels endpoints disponibles:
+
+### 📦 **POST /api/articles**
+
+Crea un article nou.
+
+- **Method**: `POST`
+- **Paràmetres**: El cos de la petició haurà de contenir les dades de l'article a crear (títol, contingut, etc.).
+
+### ✏️ **PUT /api/articles/{id}**
+
+Actualitza un article existent.
+
+- **Method**: `PUT`
+- **Paràmetres**: Substitueix `{id}` per l'ID de l'article que vols actualitzar. El cos de la petició ha de contenir les dades actualitzades de l'article.
+
+### 🗑️ **DELETE /api/articles/{id}**
+
+Elimina un article existent.
+
+- **Method**: `DELETE`
+- **Paràmetres**: Substitueix `{id}` per l'ID de l'article que vols eliminar.
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
