@@ -40,7 +40,7 @@ class ApiUsuariJWTController extends Controller
             UsuariJWT::create([
                 'user_id' => $user->id,
                 'token' => $token,
-                'expira' => now()->addHours(config('jwt.ttl')) // Usa el TTL de la configuración
+                'expira' => now()->addHours(config('jwt.ttl'))
             ]);
             // Retorna el token i la seva expiració
             return response()->json([
